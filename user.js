@@ -4,6 +4,8 @@
  * https://github.com/pyllyukko/user.js                                       *
  ******************************************************************************/
 
+// NOTE: any changes to this file are marked with [FORK] or [FORK-*]
+
 /******************************************************************************
  * SECTION: HTML5 / APIs / DOM                                                *
  ******************************************************************************/
@@ -548,20 +550,22 @@ user_pref("privacy.resistFingerprinting",			true);
 user_pref("privacy.resistFingerprinting.block_mozAddonManager", true);
 user_pref("extensions.webextensions.restrictedDomains", "");
 
+// [FORK-ENABLED]
 // PREF: enable RFP letterboxing / resizing of inner window [FF67+] (disabled)
 // https://bugzilla.mozilla.org/1407366
-//user_pref("privacy.resistFingerprinting.letterboxing", true);
-//user_pref("privacy.resistFingerprinting.letterboxing.dimensions", "800x600, 1000x1000, 1600x900");
+user_pref("privacy.resistFingerprinting.letterboxing", true);
+//user_pref("privacy.resistFingerprinting.letterboxing.dimensions", "800x600, 1000x1000, 1600x900"); // Do not enable, per arkenfox
 
 // PREF: disable showing about:blank/maximized window as soon as possible during startup [FF60+]
 // https://bugzilla.mozilla.org/1448423
 user_pref("browser.startup.blankWindow", false);
 
+// [FORK-MODIFIED]
 // PREF: Disable the built-in PDF viewer
 // https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2015-2743
 // https://blog.mozilla.org/security/2015/08/06/firefox-exploit-found-in-the-wild/
 // https://www.mozilla.org/en-US/security/advisories/mfsa2015-69/
-user_pref("pdfjs.disabled",					true);
+user_pref("pdfjs.disabled",					false);
 
 // PREF: Disable collection/sending of the health report (healthreport.sqlite*)
 // https://support.mozilla.org/en-US/kb/firefox-health-report-understand-your-browser-perf
@@ -596,10 +600,11 @@ user_pref("app.shield.optoutstudies.enabled",			false);
 // https://groups.google.com/d/topic/mozilla.dev.platform/nyVkCx-_sFw/discussion
 user_pref("loop.logDomains",					false);
 
+// [FORK-FORCE-DISABLED]
 // PREF: Enable Auto Update (disabled)
 // NOTICE: Fully automatic updates are disabled and left to package management systems on Linux. Windows users may want to change this setting.
 // CIS 2.1.1
-//user_pref("app.update.auto",					true);
+user_pref("app.update.auto",					false);
 
 // PREF: Enforce checking for Firefox updates
 // http://kb.mozillazine.org/App.update.enabled
@@ -725,13 +730,14 @@ user_pref("security.csp.enable",				true);
 // https://wiki.mozilla.org/Security/Subresource_Integrity
 user_pref("security.sri.enable",				true);
 
+// [FORK-ENABLED]
 // PREF: DNT HTTP header (disabled)
 // https://www.mozilla.org/en-US/firefox/dnt/
 // https://en.wikipedia.org/wiki/Do_not_track_header
 // https://dnt-dashboard.mozilla.org
 // https://github.com/pyllyukko/user.js/issues/11
 // NOTICE: Do No Track must be enabled manually
-//user_pref("privacy.donottrackheader.enabled",		true);
+user_pref("privacy.donottrackheader.enabled",		true);
 
 // PREF: Send a referer header with the target URI as the source (disabled)
 // https://bugzilla.mozilla.org/show_bug.cgi?id=822869
@@ -1094,11 +1100,12 @@ user_pref("security.pki.sha1_enforcement_level",		1);
 // https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2009-3555
 user_pref("security.ssl.treat_unsafe_negotiation_as_broken",	true);
 
+// [FORK-ENABLED]
 // PREF: Disallow connection to servers not supporting safe renegotiation (disabled)
 // https://wiki.mozilla.org/Security:Renegotiation#security.ssl.require_safe_negotiation
 // https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2009-3555
 // TODO: `security.ssl.require_safe_negotiation` is more secure but makes browsing next to impossible (2012-2014-... - `ssl_error_unsafe_negotiation` errors), so is left disabled
-//user_pref("security.ssl.require_safe_negotiation",		true);
+user_pref("security.ssl.require_safe_negotiation",		true);
 
 // PREF: Disable automatic reporting of TLS connection errors
 // https://support.mozilla.org/en-US/kb/certificate-pinning-reports
@@ -1213,3 +1220,95 @@ user_pref("security.ssl3.dhe_dss_camellia_256_sha",		false);
 //user_pref("security.ssl3.rsa_aes_128_sha",			false); // 0x2f
 //user_pref("security.ssl3.ecdhe_rsa_aes_256_sha",		false); // 0xc014
 //user_pref("security.ssl3.ecdhe_ecdsa_aes_256_sha",		false); // 0xc00a
+
+
+/******************************************************************************
+ * SECTION: [FORK] Additions from Arkenfox (ghacks)                           *
+ ******************************************************************************/
+
+// Note: see arkenfox for explanations
+// https://github.com/arkenfox/user.js
+
+user_pref("accessibility.force_disabled", 1);
+user_pref("browser.contentblocking.category", "custom");
+user_pref("browser.crashReports.unsubmittedCheck.autoSubmit2", false);
+user_pref("browser.display.use_system_colors", false);
+user_pref("browser.download.hide_plugins_without_extensions", false);
+user_pref("browser.download.manager.addToRecentDocs", false);
+user_pref("browser.link.open_newwindow.restriction", 0);
+user_pref("browser.link.open_newwindow", 3);
+user_pref("browser.newtabpage.activity-stream.asrouter.providers.snippets", "{}");
+user_pref("browser.newtabpage.activity-stream.default.sites", "");
+user_pref("browser.newtabpage.activity-stream.feeds.discoverystreamfeed", false);
+user_pref("browser.newtabpage.activity-stream.feeds.telemetry", false);
+user_pref("browser.newtabpage.activity-stream.section.highlights.includePocket", false);
+user_pref("browser.newtabpage.activity-stream.showSponsored", false);
+user_pref("browser.newtabpage.activity-stream.telemetry", false);
+user_pref("browser.ping-centre.telemetry", false);
+user_pref("browser.privatebrowsing.forceMediaMemoryCache", true);
+user_pref("browser.region.network.url", ""); 
+user_pref("browser.region.update.enabled", false);
+user_pref("browser.safebrowsing.downloads.remote.url", "");
+user_pref("browser.sessionstore.interval", 30000);
+user_pref("browser.startup.homepage", "about:blank");
+user_pref("browser.startup.page", 0);
+user_pref("browser.uitour.url", "");
+user_pref("browser.urlbar.dnsResolveSingleWordsAfterSearch", 0);
+user_pref("browser.urlbar.speculativeConnect.enabled", false);
+user_pref("browser.xul.error_pages.expert_bad_cert", true);
+user_pref("captivedetect.canonicalURL", "");
+user_pref("dom.disable_open_during_load", true);
+user_pref("dom.disable_window_move_resize", true);
+user_pref("dom.push.enabled", false);
+user_pref("dom.storage.next_gen", true);
+user_pref("dom.targetBlankNoOpener.enabled", true);
+user_pref("extensions.autoDisableScopes", 15);
+user_pref("extensions.enabledScopes", 5);
+user_pref("extensions.formautofill.addresses.enabled", false);
+user_pref("extensions.formautofill.available", "off");
+user_pref("extensions.formautofill.creditCards.available", false);
+user_pref("extensions.formautofill.creditCards.enabled", false);
+user_pref("extensions.formautofill.heuristics.enabled", false);
+user_pref("extensions.getAddons.showPane", false);
+user_pref("extensions.htmlaboutaddons.recommendations.enabled", false);
+user_pref("extensions.systemAddon.update.url", "");
+user_pref("extensions.webcompat-reporter.enabled", false);
+user_pref("geo.provider.ms-windows-location", false); // [WINDOWS]
+user_pref("geo.provider.use_corelocation", false); // [MAC]
+user_pref("geo.provider.use_gpsd", false); // [LINUX]
+user_pref("gfx.font_rendering.graphite.enabled", false);
+user_pref("media.autoplay.blocking_policy", 2);
+user_pref("media.eme.enabled", false);
+user_pref("media.getusermedia.browser.enabled", false);
+user_pref("media.gmp-widevinecdm.enabled", false);
+user_pref("media.gmp-widevinecdm.visible", false);
+user_pref("media.memory_cache_max_size", 65536);
+user_pref("media.peerconnection.ice.proxy_only_if_behind_proxy", true);
+user_pref("middlemouse.contentLoadURL", false);
+user_pref("network.auth.subresource-http-auth-allow", 1);
+user_pref("network.connectivity-service.enabled", false);
+user_pref("network.cookie.thirdparty.nonsecureSessionOnly", true);
+user_pref("network.gio.supported-protocols", "");
+user_pref("network.http.redirection-limit", 10);
+user_pref("network.predictor.enable-prefetch", false);
+user_pref("permissions.delegation.enabled", false);
+user_pref("permissions.manager.defaultsUrl", "");
+user_pref("privacy.clearOnShutdown.siteSettings", false)
+user_pref("privacy.userContext.ui.enabled", true);
+user_pref("privacy.window.name.update.enabled", true);
+user_pref("security.insecure_connection_text.enabled", true);
+user_pref("security.mixed_content.block_object_subrequest", true);
+user_pref("security.ssl.errorReporting.enabled", false);
+user_pref("security.ssl.errorReporting.url", "");
+user_pref("toolkit.coverage.endpoint.base", "");
+user_pref("toolkit.coverage.opt-out", true);
+user_pref("toolkit.telemetry.bhrPing.enabled", false);
+user_pref("toolkit.telemetry.coverage.opt-out", true);
+user_pref("toolkit.telemetry.firstShutdownPing.enabled", false);
+user_pref("toolkit.telemetry.newProfilePing.enabled", false);
+user_pref("toolkit.telemetry.server", "data:,");
+user_pref("toolkit.telemetry.shutdownPingSender.enabled", false);
+user_pref("toolkit.telemetry.updatePing.enabled", false);
+user_pref("webchannel.allowObject.urlWhitelist", "");
+user_pref("webgl.enable-webgl2", false);
+user_pref("security.tls.version.enable-deprecated", false);
