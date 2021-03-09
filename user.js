@@ -88,14 +88,20 @@ user_pref("media.peerconnection.enabled",			false);
 user_pref("media.peerconnection.ice.default_address_only",	true); // Firefox 42-51
 user_pref("media.peerconnection.ice.no_host",			true); // Firefox >= 52
 
+// [FORK-MODIFIED]
 // PREF: Disable WebRTC getUserMedia, screen sharing, audio capture, video capture
 // https://wiki.mozilla.org/Media/getUserMedia
 // https://blog.mozilla.org/futurereleases/2013/01/12/capture-local-camera-and-microphone-streams-with-getusermedia-now-enabled-in-firefox/
 // https://developer.mozilla.org/en-US/docs/Web/API/Navigator
-user_pref("media.navigator.enabled",				false);
-user_pref("media.navigator.video.enabled",			false);
-user_pref("media.getusermedia.screensharing.enabled",		false);
-user_pref("media.getusermedia.audiocapture.enabled",		false);
+user_pref("media.navigator.enabled",                   false); // <default>
+user_pref("media.navigator.video.enabled",             false); // <default>
+user_pref("media.getusermedia.screensharing.enabled",  false); // <default>
+user_pref("media.getusermedia.audiocapture.enabled",   false); // <default>
+
+user_pref("media.navigator.enabled",                   true); // <flexible>
+user_pref("media.navigator.video.enabled",             true); // <flexible>
+user_pref("media.getusermedia.screensharing.enabled",  true); // <flexible>
+user_pref("media.getusermedia.audiocapture.enabled",   true); // <flexible>
 
 // PREF: Disable battery API (Firefox < 52)
 // https://developer.mozilla.org/en-US/docs/Web/API/BatteryManager
@@ -334,11 +340,13 @@ user_pref("media.video_stats.enabled",				false);
 user_pref("general.buildID.override",				"20100101");
 user_pref("browser.startup.homepage_override.buildID",		"20100101");
 
+// [FORK-MODIFIED]
 // PREF: Don't use document specified fonts to prevent installed font enumeration (fingerprinting)
 // https://github.com/pyllyukko/user.js/issues/395
 // https://browserleaks.com/fonts
 // https://github.com/pyllyukko/user.js/issues/120
-user_pref("browser.display.use_document_fonts",			0);
+user_pref("browser.display.use_document_fonts",			0); // <default>
+user_pref("browser.display.use_document_fonts",			1); // <flexible>
 
 // PREF: Enable only whitelisted URL protocol handlers
 // http://kb.mozillazine.org/Network.protocol-handler.external-default
@@ -815,12 +823,16 @@ user_pref("browser.cache.offline.enable",			false);
 user_pref("privacy.sanitize.sanitizeOnShutdown",		true);
 user_pref("privacy.clearOnShutdown.cache",			true);
 user_pref("privacy.clearOnShutdown.cookies",			false);
-user_pref("privacy.clearOnShutdown.downloads",			true);
 user_pref("privacy.clearOnShutdown.formdata",			true);
-user_pref("privacy.clearOnShutdown.history",			true);
 user_pref("privacy.clearOnShutdown.offlineApps",		false);
 user_pref("privacy.clearOnShutdown.sessions",			false);
 user_pref("privacy.clearOnShutdown.openWindows",		true);
+
+user_pref("privacy.clearOnShutdown.downloads",			true); // <default>
+user_pref("privacy.clearOnShutdown.history",			true); // <default>
+
+user_pref("privacy.clearOnShutdown.downloads",			false); // <flexible>
+user_pref("privacy.clearOnShutdown.history",			false); // <flexible>
 
 // PREF: Set time range to "Everything" as default in "Clear Recent History"
 user_pref("privacy.sanitize.timeSpan",				0);
@@ -834,8 +846,10 @@ user_pref("privacy.cpd.formdata",				true);
 user_pref("privacy.cpd.history",				true);
 user_pref("privacy.cpd.sessions",				true);
 
+// [FORK-MODIFIED]
 // PREF: Don't remember browsing history
-user_pref("places.history.enabled",				false);
+user_pref("places.history.enabled",				false); // <default>
+user_pref("places.history.enabled",				true);  // <flexible>
 
 // PREF: Disable disk cache
 // http://kb.mozillazine.org/Browser.cache.disk.enable
