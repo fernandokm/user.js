@@ -41,7 +41,8 @@ user_pref("dom.enable_user_timing",				false);
 // PREF: Disable Web Audio API
 // https://bugzilla.mozilla.org/show_bug.cgi?id=1288359
 // NOTICE: Web Audio API is required for Unity web player/games
-user_pref("dom.webaudio.enabled",				false);
+user_pref("dom.webaudio.enabled",				false); // <default>
+user_pref("dom.webaudio.enabled",				true);  // <flexible>
 
 // PREF: Disable Location-Aware Browsing (geolocation)
 // https://www.mozilla.org/en-US/firefox/geolocation/
@@ -80,13 +81,15 @@ user_pref("dom.network.enabled",				false);
 
 // PREF: Disable WebRTC entirely to prevent leaking internal IP addresses (Firefox < 42)
 // NOTICE: Disabling WebRTC breaks peer-to-peer file sharing tools (reep.io ...)
-user_pref("media.peerconnection.enabled",			false);
+user_pref("media.peerconnection.enabled",			false); // <default>
+user_pref("media.peerconnection.enabled",			true);  // <flexible>
 
 // PREF: Don't reveal your internal IP when WebRTC is enabled (Firefox >= 42)
 // https://wiki.mozilla.org/Media/WebRTC/Privacy
 // https://github.com/beefproject/beef/wiki/Module%3A-Get-Internal-IP-WebRTC
 user_pref("media.peerconnection.ice.default_address_only",	true); // Firefox 42-51
-user_pref("media.peerconnection.ice.no_host",			true); // Firefox >= 52
+user_pref("media.peerconnection.ice.no_host",			true); // Firefox >= 52 <default>
+user_pref("media.peerconnection.ice.no_host",			false); // Firefox >= 52 <flexible>
 
 // [FORK-MODIFIED]
 // PREF: Disable WebRTC getUserMedia, screen sharing, audio capture, video capture
@@ -690,7 +693,8 @@ user_pref("browser.search.suggest.enabled",			false);
 // PREF: Disable "Show search suggestions in location bar results"
 user_pref("browser.urlbar.suggest.searches",			false);
 // PREF: When using the location bar, don't suggest URLs from browsing history
-user_pref("browser.urlbar.suggest.history",			false);
+user_pref("browser.urlbar.suggest.history",			false); // <default>
+user_pref("browser.urlbar.suggest.history",			true);  // <flexible>
 
 // PREF: Disable SSDP
 // https://bugzilla.mozilla.org/show_bug.cgi?id=1111967
@@ -1297,9 +1301,11 @@ user_pref("geo.provider.ms-windows-location", false); // [WINDOWS]
 user_pref("geo.provider.use_corelocation", false); // [MAC]
 user_pref("geo.provider.use_gpsd", false); // [LINUX]
 user_pref("gfx.font_rendering.graphite.enabled", false);
-user_pref("media.autoplay.blocking_policy", 2);
+user_pref("media.autoplay.blocking_policy", 2); // <default>
+user_pref("media.autoplay.blocking_policy", 0); // <flexible>
 user_pref("media.eme.enabled", false);
-user_pref("media.getusermedia.browser.enabled", false);
+user_pref("media.getusermedia.browser.enabled", false); // <default>
+user_pref("media.getusermedia.browser.enabled", true);  // <flexible>
 user_pref("media.gmp-widevinecdm.enabled", false);
 user_pref("media.gmp-widevinecdm.visible", false);
 user_pref("media.memory_cache_max_size", 65536);

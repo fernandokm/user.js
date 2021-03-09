@@ -10,16 +10,16 @@
 user_pref("dom.serviceWorkers.enabled",				false);
 user_pref("dom.enable_performance",				false);
 user_pref("dom.enable_user_timing",				false);
-user_pref("dom.webaudio.enabled",				false);
+user_pref("dom.webaudio.enabled",				true);  // <flexible>
 user_pref("geo.enabled",					false);
 user_pref("geo.wifi.uri", "https://location.services.mozilla.com/v1/geolocate?key=%MOZILLA_API_KEY%");
 user_pref("geo.wifi.logging.enabled", false);
 user_pref("dom.mozTCPSocket.enabled",				false);
 user_pref("dom.netinfo.enabled",				false);
 user_pref("dom.network.enabled",				false);
-user_pref("media.peerconnection.enabled",			false);
+user_pref("media.peerconnection.enabled",			true);  // <flexible>
 user_pref("media.peerconnection.ice.default_address_only",	true); // Firefox 42-51
-user_pref("media.peerconnection.ice.no_host",			true); // Firefox >= 52
+user_pref("media.peerconnection.ice.no_host",			false); // Firefox >= 52 <flexible>
 user_pref("media.navigator.enabled",                   true); // <flexible>
 user_pref("media.navigator.video.enabled",             true); // <flexible>
 user_pref("media.getusermedia.screensharing.enabled",  true); // <flexible>
@@ -163,7 +163,7 @@ user_pref("network.predictor.enabled",				false);
 user_pref("network.dns.blockDotOnion",				true);
 user_pref("browser.search.suggest.enabled",			false);
 user_pref("browser.urlbar.suggest.searches",			false);
-user_pref("browser.urlbar.suggest.history",			false);
+user_pref("browser.urlbar.suggest.history",			true);  // <flexible>
 user_pref("browser.casting.enabled",				false);
 user_pref("media.gmp-gmpopenh264.enabled",			false);
 user_pref("media.gmp-manager.url",				"");
@@ -343,9 +343,9 @@ user_pref("geo.provider.ms-windows-location", false); // [WINDOWS]
 user_pref("geo.provider.use_corelocation", false); // [MAC]
 user_pref("geo.provider.use_gpsd", false); // [LINUX]
 user_pref("gfx.font_rendering.graphite.enabled", false);
-user_pref("media.autoplay.blocking_policy", 2);
+user_pref("media.autoplay.blocking_policy", 0); // <flexible>
 user_pref("media.eme.enabled", false);
-user_pref("media.getusermedia.browser.enabled", false);
+user_pref("media.getusermedia.browser.enabled", true);  // <flexible>
 user_pref("media.gmp-widevinecdm.enabled", false);
 user_pref("media.gmp-widevinecdm.visible", false);
 user_pref("media.memory_cache_max_size", 65536);
