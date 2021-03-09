@@ -4,7 +4,11 @@
  * https://github.com/pyllyukko/user.js                                       *
  ******************************************************************************/
 
-// NOTE: any changes to this file are marked with [FORK] or [FORK-*]
+// NOTES:
+//  (i) any changes to this file are marked with [FORK] or [FORK-*]
+// (ii) a config file may be tagged with to appear only in a particular release:
+//          user_pref("pref_name", value); // <default>
+//          user_pref("pref_name", value); // <flexible>
 
 /******************************************************************************
  * SECTION: HTML5 / APIs / DOM                                                *
@@ -1248,7 +1252,7 @@ user_pref("browser.newtabpage.activity-stream.showSponsored", false);
 user_pref("browser.newtabpage.activity-stream.telemetry", false);
 user_pref("browser.ping-centre.telemetry", false);
 user_pref("browser.privatebrowsing.forceMediaMemoryCache", true);
-user_pref("browser.region.network.url", ""); 
+user_pref("browser.region.network.url", "");
 user_pref("browser.region.update.enabled", false);
 user_pref("browser.safebrowsing.downloads.remote.url", "");
 user_pref("browser.sessionstore.interval", 30000);
