@@ -378,3 +378,5 @@ user_pref("toolkit.telemetry.updatePing.enabled", false);
 user_pref("webchannel.allowObject.urlWhitelist", "");
 user_pref("webgl.enable-webgl2", false);
 user_pref("security.tls.version.enable-deprecated", false);
+user_pref("dom.security.https_only_mode", true);
+user_pref("dom.security.https_only_mode_send_http_background_request", false);
